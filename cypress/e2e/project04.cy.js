@@ -6,8 +6,7 @@ const toDoCom = new ToDo()
 
 describe('Homework04 - Cypress-Project-04', () => {
   beforeEach(() => {
-    // cy.visit(`${Cypress.env('base_URL')}`)
-    cy.visit("https://www.techglobal-training.com/frontend/project-6")
+    cy.visit(`${Cypress.env('base_URL')}`)
   })
 
   it('Test Case 01 - Todo-App Modal Verification', () => {
