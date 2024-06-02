@@ -32,8 +32,8 @@ describe('Homework04 - Cypress-Project-04', () => {
 
   it('Test Case 03 - Multiple Task Operations', () => {
 
-    let newTask = ['Task - 1', 'Task - 2', 'Task - 3', 'Task - 4', 'Task - 5']
-    let numberTask = 5
+    const newTask = ['Task - 1', 'Task - 2', 'Task - 3', 'Task - 4', 'Task - 5']
+    let numberTask = newTask.length
 
     newTask.forEach(task => toDoCom.addNewTask(task));
     newTask.forEach(task => toDoCom.getTaskList().should('contain', task));
@@ -48,8 +48,8 @@ describe('Homework04 - Cypress-Project-04', () => {
 
   it('Test Case 04 - Search and Filter Functionality in todo App', () => {
 
-    let newTask = ['Task - 1', 'Task - 2', 'Task - 3', 'Task - 4', 'Task - 5']
-    let numberTask = 5
+    const newTask = ['Task - 1', 'Task - 2', 'Task - 3', 'Task - 4', 'Task - 5']
+    let numberTask = newTask.length
 
     newTask.forEach(task => toDoCom.addNewTask(task));
     newTask.forEach(task => toDoCom.getTaskList().should('contain', task));
@@ -60,17 +60,17 @@ describe('Homework04 - Cypress-Project-04', () => {
 
   it('Test Case 05 - Task Validation and Error Handling', () => {
 
-    let vTask = 'New task'
-    let notVTask = 'asdfghjkl wertyuiopxc vbnmfeewww'
+    let validTask = 'New task'
+    let notValidTask = 'asdfghjkl wertyuiopxc vbnmfeewww'
 
     toDoCom.clickAddButton()
     toDoCom.getTaskList().should('contain', 'No tasks found!')
-    toDoCom.addNewTask(notVTask)
+    toDoCom.addNewTask(notValidTask)
     toDoCom.getError().should('contain', 'Error: Todo cannot be more than 30 characters!')
-    toDoCom.addNewTask(vTask)
-    toDoCom.getTaskList().should('have.length', 1).and('contain', vTask)
-    toDoCom.addNewTask(vTask)
-    toDoCom.getError().should('contain', `Error: You already have ${vTask} in your todo list.`)
+    toDoCom.addNewTask(validTask)
+    toDoCom.getTaskList().should('have.length', 1).and('contain', validTask)
+    toDoCom.addNewTask(validTask)
+    toDoCom.getError().should('contain', `Error: You already have ${validTask} in your todo list.`)
   })
 
 })
